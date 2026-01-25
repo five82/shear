@@ -1,0 +1,16 @@
+[package]
+name = "shear"
+version = "0.1.0"
+edition = "2021"
+description = "Scene change detection for chunked video encoding"
+license = "MIT"
+repository = "https://github.com/five82/shear"
+
+[dependencies]
+av-scenechange = { version = "0.12", features = ["ffmpeg"] }
+clap = { version = "4", features = ["derive"] }
+anyhow = "1"
+
+[profile.release]
+lto = true
+strip = true
