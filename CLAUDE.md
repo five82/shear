@@ -49,7 +49,23 @@ Single-binary CLI tool with all code in `src/main.rs`:
 - `clap` (4): CLI argument parsing with derive macros
 - `anyhow` (1): Error handling
 
+## Before Committing
+
+Always run these checks before committing to avoid CI failures:
+
+```bash
+cargo fmt           # Format code
+cargo clippy -- -D warnings  # Lint (must pass with no warnings)
+cargo test          # Run tests
+```
+
 ## Conventions
 
-- Follows conventional commit format (feat:, fix:)
+- Follows conventional commit format (feat:, fix:, ci:, style:, docs:)
 - Release builds use LTO and binary stripping
+
+## CI Notes
+
+The GitHub Actions CI requires:
+- `nasm` - needed by rav1e for assembly optimizations
+- FFmpeg dev libraries (libavcodec-dev, libavformat-dev, libavutil-dev, libswscale-dev)
