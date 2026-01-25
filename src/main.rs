@@ -86,7 +86,7 @@ fn main() -> Result<()> {
     // Progress callback - use args.total_frames since callback's total is unreliable
     let known_total = args.total_frames;
     let progress_fn = |current: usize, _total: usize| {
-        if known_total > 0 && current % 100 == 0 {
+        if known_total > 0 && current.is_multiple_of(100) {
             let pct = (current as f64 / known_total as f64) * 100.0;
             // Clamp to 100% in case of frame count mismatch
             let pct = if pct > 100.0 { 100.0 } else { pct };
@@ -174,7 +174,7 @@ fn split_long_scenes(scene_starts: &[usize], total_frames: usize, max_frames: us
         let scene_len = end.saturating_sub(start);
         if scene_len > max_frames {
             // Calculate how many chunks we need
-            let num_chunks = (scene_len + max_frames - 1) / max_frames;
+            let num_chunks = scene_len.div_ceil(max_frames);
             let chunk_size = scene_len / num_chunks;
 
             // Add intermediate split points
