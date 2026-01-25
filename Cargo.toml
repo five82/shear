@@ -3,7 +3,7 @@ name = "shear"
 version = "0.1.0"
 edition = "2021"
 description = "Scene change detection for chunked video encoding"
-license = "MIT"
+license = "GPL-3.0"
 repository = "https://github.com/five82/shear"
 
 [dependencies]

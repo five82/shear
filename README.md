@@ -80,4 +80,4 @@ This ensures no chunk is too long while respecting natural scene boundaries wher
 
 ## License
 
-MIT
+GPL-3.0
