@@ -4,10 +4,7 @@
 //! Long scenes are automatically split at regular intervals.
 
 use anyhow::{Context, Result};
-use av_scenechange::{
-    decoder::Decoder, detect_scene_changes, ffmpeg::FfmpegDecoder, DetectionOptions,
-    SceneDetectionSpeed,
-};
+use av_scenechange::{detect_scene_changes, Decoder, DetectionOptions, SceneDetectionSpeed};
 use clap::Parser;
 use std::cmp::min;
 use std::fs::File;
@@ -71,9 +68,8 @@ fn main() -> Result<()> {
         );
     }
 
-    // Create FFmpeg decoder for scene detection
-    let ffmpeg_dec = FfmpegDecoder::new(&args.input).context("Failed to create FFmpeg decoder")?;
-    let mut decoder: Decoder<std::io::Empty> = Decoder::Ffmpeg(ffmpeg_dec);
+    // Create decoder for scene detection
+    let mut decoder = Decoder::from_file(&args.input).context("Failed to create decoder")?;
 
     // Configure scene detection
     let opts = DetectionOptions {
@@ -101,9 +97,8 @@ fn main() -> Result<()> {
     };
 
     // Run scene detection
-    let results: av_scenechange::DetectionResults =
-        detect_scene_changes::<std::io::Empty, u8>(&mut decoder, opts, None, progress_callback)
-            .context("Scene detection failed")?;
+    let results = detect_scene_changes::<u8>(&mut decoder, opts, None, progress_callback)
+        .context("Scene detection failed")?;
 
     if args.progress {
         eprintln!(
