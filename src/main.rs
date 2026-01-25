@@ -5,10 +5,8 @@
 
 use anyhow::{Context, Result};
 use av_scenechange::{
-    decoder::Decoder,
-    detect_scene_changes,
-    ffmpeg::FfmpegDecoder,
-    DetectionOptions, SceneDetectionSpeed,
+    decoder::Decoder, detect_scene_changes, ffmpeg::FfmpegDecoder, DetectionOptions,
+    SceneDetectionSpeed,
 };
 use clap::Parser;
 use std::cmp::min;
@@ -74,8 +72,7 @@ fn main() -> Result<()> {
     }
 
     // Create FFmpeg decoder for scene detection
-    let ffmpeg_dec =
-        FfmpegDecoder::new(&args.input).context("Failed to create FFmpeg decoder")?;
+    let ffmpeg_dec = FfmpegDecoder::new(&args.input).context("Failed to create FFmpeg decoder")?;
     let mut decoder: Decoder<std::io::Empty> = Decoder::Ffmpeg(ffmpeg_dec);
 
     // Configure scene detection
