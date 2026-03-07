@@ -121,9 +121,9 @@ dependencies = [
 
 [[package]]
 name = "av-scenechange"
-version = "0.22.1"
+version = "0.23.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "30f43101ac623dced110567997d6b9a43873490263ec72cdd2c0a4c111074738"
+checksum = "4a6f553be33f9c84cc95b7391e8c4a7732e9c11aca66aaeaa1102c554f756fed"
 dependencies = [
  "aligned",
  "anyhow",
@@ -275,9 +275,9 @@ checksum = "b05b61dc5112cbb17e4b6cd61790d9845d13888356391624cbe7e41efeac1e75"
 
 [[package]]
 name = "cpufeatures"
-version = "0.2.17"
+version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "59ed5838eebb26a2bb2e58f6d5b5316989ae9d08bab10e0e6d103e656d1b0280"
+checksum = "8b2a41393f66f16b0823bb79094d54ac5fbd34ab292ddafb9a0456ac9f87d201"
 dependencies = [
  "libc",
 ]
